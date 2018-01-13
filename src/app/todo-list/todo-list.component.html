@@ -1,3 +1,41 @@
-<p>
-  todo-list works!
-</p>
+<div *ngIf="todos">
+    <nz-card>
+        <ng-template #title>
+            todo-list{{todos.length}} <i class="anticon anticon-reload" (click)="refresh()"></i>
+        </ng-template>
+        <ng-template #body>
+            <nz-table #nzTable [nzDataSource]="todos" [nzPageSize]="5">
+                <thead nz-thead>
+                    <tr>
+                        <th nz-th><span>id</span></th>
+                        <th nz-th><span>Content</span></th>
+                        <th nz-th><span>createTime</span></th>
+                        <!-- <th nz-th><span>lastUpdateTime</span></th>
+                        <th nz-th><span>reminderDate</span></th>
+                        <th nz-th><span>Operation</span></th> -->
+                    </tr>
+                </thead>
+                <tbody nz-tbody>
+                    <tr nz-tbody-tr *ngFor="let todo of nzTable.data">
+                        <td nz-td>
+                            <label nz-checkbox [(ngModel)]="isCheckedButton" [nzDisabled]="isDisabledButton">
+                                <a>{{todo.id}}</a>
+                            </label>
+                        </td>
+                        <td nz-td>{{todo.content}}</td>
+                        <td nz-td>{{todo.createTime | date:'yyyy-MM-dd HH:mm'}}</td>
+                        <!-- <td nz-td>{{todo.lastUpdateTime | date:'yyyy-MM-dd HH:mm'}}</td>
+                        <td nz-td>{{todo.reminderDate | date:'yyyy-MM-dd HH:mm'}}</td> -->
+                        <!-- <td nz-td>
+                            <span>
+                            <a href="#">Update</a>
+                            <span nz-table-divider></span>
+                            <a href="#">Delete</a>
+                            </span>
+                        </td> -->
+                    </tr>
+                </tbody>
+            </nz-table>
+        </ng-template>
+    </nz-card>
+</div>
