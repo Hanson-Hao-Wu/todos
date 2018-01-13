@@ -1,6 +1,8 @@
 <nz-layout class="layout" style="min-height: 100%">
     <nz-header>
-        <div class="logo"></div>
+        <a href="" id="logo">
+            <!-- <img alt="logo" src="./assets/img/zorro.svg"> -->
+        </a>
         <ul nz-menu [nzTheme]="'dark'" [nzMode]="'horizontal'" style="line-height: 64px;">
             <li nz-menu-item>nav 1</li>
             <li nz-menu-item>nav 2</li>
@@ -17,7 +19,7 @@
             <nz-sider [nzWidth]="200" style="background:#fff">
                 <ul nz-menu [nzMode]="'inline'" style="height:100%">
                     <li nz-submenu>
-                        <span title><i class="anticon anticon-user"></i>subnav 1</span>
+                        <span title><i class="anticon anticon-user"></i>user</span>
                         <ul>
                             <li nz-menu-item>option1</li>
                             <li nz-menu-item>option2</li>
@@ -26,12 +28,10 @@
                         </ul>
                     </li>
                     <li nz-submenu>
-                        <span title><i class="anticon anticon-laptop"></i>subnav 2</span>
+                        <span title><i class="anticon anticon-laptop"></i>todos</span>
                         <ul>
-                            <li nz-menu-item>option5</li>
-                            <li nz-menu-item>option6</li>
-                            <li nz-menu-item>option7</li>
-                            <li nz-menu-item>option8</li>
+                            <li nz-menu-item><a routerLink="/todoList">todoList</a></li>
+                            <li nz-menu-item><a routerLink="/doneList">doneList</a></li>
                         </ul>
                     </li>
                     <li nz-submenu>
@@ -46,9 +46,7 @@
                 </ul>
             </nz-sider>
             <nz-content style="padding: 0 24px; min-height: 280px;">
-                <a routerLink="/todoList">todoList</a>
-                <a routerLink="/doneList">doneList</a>
-                <app-todo-search></app-todo-search>
+                <!-- <app-todo-search></app-todo-search> -->
                 <app-add-todo></app-add-todo>
                 <router-outlet></router-outlet>
             </nz-content>
