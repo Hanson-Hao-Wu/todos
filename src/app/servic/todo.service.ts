@@ -19,9 +19,16 @@ export class TodoService {
 
   constructor(private http: HttpClient) { }
 
+  getTodosByStatus(status:string): Observable<Todo[]> {
+    return this.http.get<Todo[]>(`${this.todosUrl}/?status=${status}`).pipe(
+      tap(todos => console.log(`TodoService fetched getTodosByStatus=${status} ${todos.length}`)),
+      catchError(this.handleError<any>('getTodos'))
+    );
+  }
+
   getTodos(): Observable<Todo[]> {
     return this.http.get<Todo[]>(this.todosUrl).pipe(
-      tap(todos => console.log(`TodoService fetched todo ${todos.length}`)),
+      tap(todos => console.log(`TodoService getTodos todo ${todos.length}`)),
       catchError(this.handleError<any>('getTodos'))
     );
   }

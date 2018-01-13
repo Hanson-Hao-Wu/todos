@@ -19,7 +19,7 @@ export class TodoListComponent implements OnInit {
   }
 
   getTodos(): void {
-    this.todoService.getTodos()
+    this.todoService.getTodosByStatus('todo')
       .subscribe(todos => this.todos = todos);
   }
 

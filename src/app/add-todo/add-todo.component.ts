@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '../model/todo';
 import { TodoService } from '../servic/todo.service';
-import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-todo',
@@ -10,7 +10,7 @@ import { Location } from '@angular/common';
 })
 export class AddTodoComponent implements OnInit {
 
-  constructor(private todoService: TodoService, private location: Location) { }
+  constructor(private todoService: TodoService, private router: Router) { }
 
   todoContent: string = '';
 
@@ -28,14 +28,15 @@ export class AddTodoComponent implements OnInit {
       content: content,
       createTime: Date.now(),
       lastUpdateTime: Date.now(),
-      reminderDate: Date.now()
+      reminderDate: Date.now(),
+      status:"todo"
     };
 
     console.log(`click add todo icon with content: ${todo.content}`);
 
     this.todoService.addTodo(todo)
       .subscribe(() => {
-       
+       this.router.navigate(['/todoList']);
       });
 
   }
