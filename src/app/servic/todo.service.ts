@@ -19,9 +19,16 @@ export class TodoService {
 
   constructor(private http: HttpClient) { }
 
+  getTodosByStatus(status:string): Observable<Todo[]> {
+    return this.http.get<Todo[]>(`${this.todosUrl}/?status=${status}`).pipe(
+      tap(todos => console.log(`TodoService fetched getTodosByStatus=${status} ${todos.length}`)),
+      catchError(this.handleError<any>('getTodos'))
+    );
+  }
+
   getTodos(): Observable<Todo[]> {
     return this.http.get<Todo[]>(this.todosUrl).pipe(
-      tap(todos => console.log(`TodoService fetched todo ${todos.length}`)),
+      tap(todos => console.log(`TodoService getTodos todo ${todos.length}`)),
       catchError(this.handleError<any>('getTodos'))
     );
   }
@@ -32,6 +39,25 @@ export class TodoService {
     return this.http.post<Todo>(this.todosUrl, todo, httpOptions).pipe(
       tap((todo: Todo) => this.log(`TodoService add todo id=${todo.id} content=${todo.content}`)),
       catchError(this.handleError<Todo>('addTodo'))
+    );
+  }
+
+  /** PUT: update the todo on the server */
+  updateTodo (todo: Todo): Observable<any> {
+    return this.http.put(this.todosUrl, todo, httpOptions).pipe(
+      tap(_ => this.log(`updated todo id=${todo.id}`)),
+      catchError(this.handleError<any>('updateTodo'))
+    );
+  }
+
+  /** DELETE: delete the todo from the server */
+  deleteTodo (todo: Todo | number): Observable<Todo> {
+    const id = typeof todo === 'number' ? todo : todo.id;
+    const url = `${this.todosUrl}/${id}`;
+
+    return this.http.delete<Todo>(url, httpOptions).pipe(
+      tap(_ => this.log(`deleted todo id=${id}`)),
+      catchError(this.handleError<Todo>('deleteTodo'))
     );
   }
 
@@ -56,7 +82,7 @@ export class TodoService {
   }
 
   private log(message: string) {
-    console.log(`HeroService ${message}`);
+    console.log(`TodoService ${message}`);
   }
 
 

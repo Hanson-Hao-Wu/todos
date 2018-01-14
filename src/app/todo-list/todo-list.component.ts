@@ -19,8 +19,15 @@ export class TodoListComponent implements OnInit {
   }
 
   getTodos(): void {
-    this.todoService.getTodos()
+    this.todoService.getTodosByStatus('todo')
       .subscribe(todos => this.todos = todos);
+  }
+
+  checkTodo(todo: Todo): void {
+    this.todos = this.todos.filter(t => t !== todo);
+    todo.status = 'done';
+    todo.lastUpdateTime = Date.now();
+    this.todoService.updateTodo(todo).subscribe();
   }
 
   refresh(): void {

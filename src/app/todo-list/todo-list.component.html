@@ -1,7 +1,7 @@
 <div *ngIf="todos">
     <nz-card>
         <ng-template #title>
-            todo-list{{todos.length}} <i class="anticon anticon-reload" (click)="refresh()"></i>
+            todo-list total: {{todos.length}} <i class="anticon anticon-reload" (click)="refresh()"></i>
         </ng-template>
         <ng-template #body>
             <nz-table #nzTable [nzDataSource]="todos" [nzPageSize]="5">
@@ -11,8 +11,8 @@
                         <th nz-th><span>Content</span></th>
                         <th nz-th><span>createTime</span></th>
                         <!-- <th nz-th><span>lastUpdateTime</span></th>
-                        <th nz-th><span>reminderDate</span></th>
-                        <th nz-th><span>Operation</span></th> -->
+                        <th nz-th><span>reminderDate</span></th> -->
+                        <th nz-th><span>Operation</span></th>
                     </tr>
                 </thead>
                 <tbody nz-tbody>
@@ -26,13 +26,13 @@
                         <td nz-td>{{todo.createTime | date:'yyyy-MM-dd HH:mm'}}</td>
                         <!-- <td nz-td>{{todo.lastUpdateTime | date:'yyyy-MM-dd HH:mm'}}</td>
                         <td nz-td>{{todo.reminderDate | date:'yyyy-MM-dd HH:mm'}}</td> -->
-                        <!-- <td nz-td>
+                        <td nz-td>
                             <span>
                             <a href="#">Update</a>
                             <span nz-table-divider></span>
-                            <a href="#">Delete</a>
+                            <a (click)="checkTodo(todo)">Check</a>
                             </span>
-                        </td> -->
+                        </td>
                     </tr>
                 </tbody>
             </nz-table>
