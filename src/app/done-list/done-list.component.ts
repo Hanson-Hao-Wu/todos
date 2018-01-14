@@ -24,8 +24,8 @@ export class DoneListComponent implements OnInit {
 
   unCheckDone(todo: Todo): void {
     this.doneList = this.doneList.filter(done => done !== todo);
-    todo.status='todo';
-    todo.lastUpdateTime=Date.now();
+    todo.status = 'todo';
+    todo.lastUpdateTime = Date.now();
     this.todoService.updateTodo(todo).subscribe();
   }
 

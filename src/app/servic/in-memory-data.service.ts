@@ -6,7 +6,6 @@ export class InMemoryDataService implements InMemoryDbService {
 
   createDb() {
     const todos = [
-<<<<<<< HEAD
       { id: 11, content: 'Mr. Nice', createTime: Date.now(), lastUpdateTime: Date.now(), reminderDate: Date.now(),status:"todo"},
       { id: 12, content: 'Narco', createTime: Date.now(), lastUpdateTime: Date.now(), reminderDate: Date.now(),status:"todo" },
       { id: 13, content: 'Bombasto', createTime: Date.now(), lastUpdateTime: Date.now(), reminderDate: Date.now(),status:"todo" },
@@ -17,18 +16,6 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 18, content: 'Dr IQ', createTime: Date.now(), lastUpdateTime: Date.now(), reminderDate: Date.now() ,status:"done"},
       { id: 19, content: 'Magma', createTime: Date.now(), lastUpdateTime: Date.now(), reminderDate: Date.now() ,status:"done"},
       { id: 20, content: 'Tornado', createTime: Date.now(), lastUpdateTime: Date.now(), reminderDate: Date.now(),status:"done" }
-=======
-      { id: 11, content: 'Mr. Nice', createTime: Date.now(), lastUpdateTime: Date.now(), reminderDate: Date.now(), status: "todo" },
-      { id: 12, content: 'Narco', createTime: Date.now(), lastUpdateTime: Date.now(), reminderDate: Date.now(), status: "todo" },
-      { id: 13, content: 'Bombasto', createTime: Date.now(), lastUpdateTime: Date.now(), reminderDate: Date.now(), status: "todo" },
-      { id: 14, content: 'Celeritas', createTime: Date.now(), lastUpdateTime: Date.now(), reminderDate: Date.now(), status: "todo" },
-      { id: 15, content: 'Magneta', createTime: Date.now(), lastUpdateTime: Date.now(), reminderDate: Date.now(), status: "todo" },
-      { id: 16, content: 'RubberMan', createTime: Date.now(), lastUpdateTime: Date.now(), reminderDate: Date.now(), status: "done" },
-      { id: 17, content: 'Dynama', createTime: Date.now(), lastUpdateTime: Date.now(), reminderDate: Date.now(), status: "todo" },
-      { id: 18, content: 'Dr IQ', createTime: Date.now(), lastUpdateTime: Date.now(), reminderDate: Date.now(), status: "done" },
-      { id: 19, content: 'Magma', createTime: Date.now(), lastUpdateTime: Date.now(), reminderDate: Date.now(), status: "todo" },
-      { id: 20, content: 'Tornado', createTime: Date.now(), lastUpdateTime: Date.now(), reminderDate: Date.now(), status: "done" }
->>>>>>> 09587a3acd9bf1898fb8134ee6624e4851328f33
     ];
     return { todos };
   }
