@@ -42,6 +42,25 @@ export class TodoService {
     );
   }
 
+  /** PUT: update the todo on the server */
+  updateTodo (todo: Todo): Observable<any> {
+    return this.http.put(this.todosUrl, todo, httpOptions).pipe(
+      tap(_ => this.log(`updated todo id=${todo.id}`)),
+      catchError(this.handleError<any>('updateTodo'))
+    );
+  }
+
+  /** DELETE: delete the todo from the server */
+  deleteTodo (todo: Todo | number): Observable<Todo> {
+    const id = typeof todo === 'number' ? todo : todo.id;
+    const url = `${this.todosUrl}/${id}`;
+
+    return this.http.delete<Todo>(url, httpOptions).pipe(
+      tap(_ => this.log(`deleted todo id=${id}`)),
+      catchError(this.handleError<Todo>('deleteTodo'))
+    );
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.
@@ -63,7 +82,7 @@ export class TodoService {
   }
 
   private log(message: string) {
-    console.log(`HeroService ${message}`);
+    console.log(`TodoService ${message}`);
   }
 
 

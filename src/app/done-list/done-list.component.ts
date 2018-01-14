@@ -22,6 +22,18 @@ export class DoneListComponent implements OnInit {
       .subscribe(doneList => this.doneList = doneList);
   }
 
+  unCheckDone(todo: Todo): void {
+    this.doneList = this.doneList.filter(done => done !== todo);
+    todo.status='todo';
+    todo.lastUpdateTime=Date.now();
+    this.todoService.updateTodo(todo).subscribe();
+  }
+
+  deleteDone(todo: Todo): void {
+    this.doneList = this.doneList.filter(done => done !== todo);
+    this.todoService.deleteTodo(todo).subscribe();
+  }
+
   refresh(): void {
     this.getDoneList();
   }

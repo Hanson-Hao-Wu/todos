@@ -28,9 +28,9 @@
                       <td nz-td>{{done.reminderDate | date:'yyyy-MM-dd HH:mm'}}</td> -->
                         <td nz-td>
                             <span>
-                          <a href="#">Put Back</a>
+                          <a (click)="unCheckDone(done)">Put Back</a>
                           <span nz-table-divider></span>
-                            <a href="#">Delete</a>
+                            <a (click)="deleteDone(done)">Delete</a>
                             </span>
                         </td>
                     </tr>

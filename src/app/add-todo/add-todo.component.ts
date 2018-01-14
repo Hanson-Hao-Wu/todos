@@ -19,7 +19,7 @@ export class AddTodoComponent implements OnInit {
   addTodo(): void {
     let content = this.todoContent.trim();
     this.todoContent = '';
-    
+
     if (!content) {
       return;
     }
@@ -29,17 +29,14 @@ export class AddTodoComponent implements OnInit {
       createTime: Date.now(),
       lastUpdateTime: Date.now(),
       reminderDate: Date.now(),
-      status:"todo"
+      status: "todo"
     };
 
     console.log(`click add todo icon with content: ${todo.content}`);
 
     this.todoService.addTodo(todo)
       .subscribe(() => {
-       this.router.navigate(['/todoList']);
+        this.router.navigate(['/todoList']);//do reload the todo page 
       });
-
   }
-
-
 }
